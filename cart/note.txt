@@ -1,0 +1,49 @@
+                           FRONT END DESIGNING
+
+1) create a project -ng new cart
+2) Run angluar - ng serve -o
+3) Add bootstrap,fontAwesome,google fonts
+4) Lazy loading-
+               Its a process of loading components and modules it improves application load time
+
+            ng g m products --route products --module app.module   
+
+5) Add router-outlet selector into the route component in app.component.html
+
+6) create a component should lazy loaded in the products module
+
+->all-products -ng g c products/all-products
+->cart - ng g c products/cart
+->wishlist-ng g c products/wishlist
+
+7) Setup path for each module
+
+    products-routing .module
+
+8) pageNotFound -ng g c page-not-found  
+
+    setting path for page-not-found -app.route.module
+     {path:'**',component:PageNotFoundComponent}
+
+9) Creating header and footer
+     ng g c header
+     ng g c footer     
+
+10) Designing of frontend
+
+11) Integration
+    
+    a) Creating services for Api calling - ng g s products/api
+
+    b) import HttpClientModule in products module
+
+    c) Dependency injection HttpClientModule class in API services
+
+12) page Designing
+13) Search for a product
+
+           ng g p products/pipes/filter
+
+
+
+           *ngFor="let product of cartitem"

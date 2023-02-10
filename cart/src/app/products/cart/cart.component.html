@@ -1,0 +1,127 @@
+<!-- empty Cart -->
+<div class="cart1" *ngIf="cartitem.length==0">
+<div class="container" style="align-items: center;" >
+    <div class="row">
+        <div class="col"></div>
+        <img src="https://cdn.dribbble.com/users/2046015/screenshots/4591856/first_white_girl_drbl.gif"
+            alt="" class="img" >
+
+        <button class="btn btn-dark"  routerLink="/">shop now</button>
+
+    </div>
+</div>
+</div>
+<!-- table for cart -->
+<div class="container" *ngIf="cartitem.length!=0">
+    <div class="row">
+        <div class="col">
+            <section class="vh-100" style="background-color: #fff;">
+                <div class="container h-100">
+                  <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col">
+                      <p><span class="h2">Shopping Cart </span><span class="h4"></span></p>
+              
+                      <div class="card mb-4"  *ngFor="let product of cartitem,let i=index" >
+                        <div class="card-body p-4">
+              
+                          <div class="row align-items-center">
+                            <div class="col-md-2">
+                              <img [src]=product.image alt="" style="width: 200px; height: 200px;">
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center">
+                              <div>
+                                <p class="small text-muted mb-4 pb-2">{{i+1}}</p>
+                                <p class="lead fw-normal mb-0"></p>
+                              </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center">
+                              <div>
+                                <p class="small text-muted mb-4 pb-2">{{product.title}}</p>
+                                <!-- <p class="lead fw-normal mb-0"><i class="fas fa-circle me-2" style="color: #fdd8d2;"></i>
+                                  pink rose</p> -->
+                              </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center">
+                              <div>
+                                <p class="small text-muted mb-4 pb-2">Quantity</p>
+                                <p class="lead fw-normal mb-0">1</p>
+                              </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center">
+                              <div>
+                                <p class="small text-muted mb-4 pb-2">Price</p>
+                                <p class="lead fw-normal mb-0">$ {{product.price}}</p>
+                              </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center">
+                              <div>
+                                <!-- <p class="small text-muted mb-4 pb-2">Total</p> -->
+                                <i (click)="removecart(product)"  class="fa-sharp fa-solid fa-trash text-danger"></i>
+                              </div>
+                            </div>
+                          </div>
+              
+                        </div>
+                      </div>
+              
+                      <div class="card mb-5">
+                        <div class="card-body p-4">
+              
+                          <div class="float-end">
+                            <p class="mb-0 me-5 d-flex align-items-center">
+                              <span class="small text-muted me-2">Order total:</span> <span
+                                class="lead fw-normal">$ {{grand}}</span>
+                            </p>
+                          </div>
+              
+                        </div>
+                      </div>
+              
+                    </div>
+                  </div>
+                </div>
+              </section>
+            <div style="float: right;">
+                <button (click)="removeall()" class="btn btn-dark mt-3">Empty Cart</button>
+                <button class="btn btn-dark ms-3 mt-3" routerLink="">shop more</button>
+                <button class="btn btn-dark ms-3 mt-3"  data-bs-toggle="modal" data-bs-target="#exampleModal" >check out</button>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Check out page</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>Delivery address</h1>
+        <form action="">
+          <input type="text" placeholder="Enter your name" class="form-control">
+          <input type="text" placeholder="House no" class="form-control">
+          <input type="text" placeholder="district" class="form-control">
+          <input type="text" placeholder="pin" class="form-control">
+          <input type="text" placeholder="phone numbber" class="form-control">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">proceed</button>
+        <div>discount
+          <div [ngSwitch]="grand">
+        <img  *ngSwitchCase="discount5per()" width="100px" src="https://png.pngtree.com/png-clipart/20210530/ourmid/pngtree-red-coupon-10-off-png-image_3391013.jpg" alt="">
+      </div>
+      </div>
+      </div>
+
+      
+    </div>
+  </div>
